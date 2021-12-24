@@ -1,4 +1,4 @@
-# aop
+# aop实现动态数据源切换
 DynamicDataSourceAspect切面类   拦截注解
 
     @component
