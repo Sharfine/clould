@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: cloud-account
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.56.10:3306/mall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${spring.cloud.nacos.config.server-addr}
+        namespace: 06608ba6-e4ca-4dae-993a-02d9466c5a28
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        namespace: 06608ba6-e4ca-4dae-993a-02d9466c5a28
+        shared-configs: fmall-base.yml
+        refresh-enabled: true
+
+seata:
+  enabled: true
+  enable-auto-data-source-proxy: true
+  tx-service-group: my_test_tx_group
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: localhost:8848
+      username: nacos
+      password: nacos
+      namespace: adf14a31-cd72-48d4-80a7-360f594267f3
+  config:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      namespace: adf14a31-cd72-48d4-80a7-360f594267f3
+
+server:
+  port: 20000
+logging:
+  level:
+    com.sharfine.fmall.auth.feign.ThirdPartFeignService: debug
