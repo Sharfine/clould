@@ -34,7 +34,7 @@ import java.util.List;
  * @since 2020-06-30
  */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
